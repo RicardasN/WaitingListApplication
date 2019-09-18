@@ -23,7 +23,7 @@ router.post('/getticket', function (req, res) {
 
 router.get('/waitingList', async function (req, res) {
     var clients = [];
-    const sql = 'SELECT * from `clients` LIMIT 20';
+    const sql = 'SELECT * from `clients` WHERE `wasServed`=0 LIMIT 20';
     db.query(sql, async function (err, result) {
         if (err) throw err;
         for (var i = 0; i < result.length; i++) {
@@ -62,8 +62,14 @@ router.get('/waitingList/:id', function (req, res) {
             res.render('waitingList', { clients: [client] });
         });
     });
-
 })
+router.get('/client/changeState/:id', function(req, res){
+    var sql = 'UPDATE `clients` SET `wasServed` = 1 WHERE `clients`.`client_id` = '+req.params.id;
+    db.query(sql, function (err) {
+        if (err) console.log(err);
+        res.redirect('/waitingList');
+    });
+});
 function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
 }
