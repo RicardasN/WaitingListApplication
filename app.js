@@ -7,7 +7,8 @@ const app = express();
 var db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'secret123'
+    password : 'secret123',
+    database : 'waitingApp'
   });
 //Connect  
 db.connect(function(err){
@@ -18,14 +19,8 @@ db.connect(function(err){
 });
 
 //Routes
-app.get('/createdb', function(req, res){
-    let sql = 'CREATE DATABASE waitingApp';
-    db.query(sql, function(err, result){
-        if(err) throw err;
-        console.log(result);
-        res.send('Database created!');
-    })
-});
+//Routes for creating Database and it's tables
+app.use("/", require("./routes/databaseIntialization"));
 
 
 app.listen(process.env.PORT || 3000, function(){
