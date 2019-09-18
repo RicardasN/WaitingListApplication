@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+<div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="feature-car-rent-box-1">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Specialist</th>
+                                <th scope="col">Time Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<clients.length; i++){ %>
+                            <tr>
+                                <th scope="row"><%= clients[i].number %></th>
+                                <td><%= clients[i].name %></td>
+                                <td><%= clients[i].specialist %></td>
+                                <td>5 minutes</td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

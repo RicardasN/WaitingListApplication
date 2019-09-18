@@ -11,7 +11,7 @@
                   <li>
                     <span>Name</span>
                     <span class="spec">
-                      <input class="form-control" type="text" name="name" id="name" placeholder="Name">
+                      <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
                     </span>
                   </li>
                   <li>
@@ -19,7 +19,7 @@
                     <span class="spec">
                       <select name="specialistSelect" id="specialistSelect" class="form-control">
                         <% for(var i=0; i<specializations.length; i++){ %>
-                          <option value="<%=specializations[i].id%>"><%= specializations[i].specialization %></option>
+                          <option value="<%=specializations[i].specialization_id%>"><%= specializations[i].specialization %></option>
                         <%}%>
                       </select>
                     </span>
