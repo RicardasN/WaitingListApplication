@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
-
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
@@ -39,7 +39,7 @@
                 <div class="row align-items-center position-relative">
                     <div class="col-3 ">
                         <div class="site-logo">
-                            <a href="index.html">Waiting List</a>
+                            <a href="/">Waiting List</a>
                         </div>
                     </div>
                     <div class="col-9  text-right">
@@ -48,10 +48,16 @@
                                     class="icon-menu h3 text-white"></span></a></span>
                         <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="/" class="nav-link">Home</a></li>
                                 <li><a href="/waitingList" class="nav-link">Waiting Row</a></li>
                                 <li><a href="about.html" class="nav-link">About</a></li>
-                                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                                <% if(!currentUser){%>
+                                    <li><a href="/login" class="nav-link">Login</a></li>
+                                    <li><a href="/signup" class="nav-link">Sign Up</a></li>
+                                <%} else{%>
+                                    <li><a href="/profile" class="nav-link">Signed In as <%= currentUser.username %></a></li>
+                                    <li><a href="/login" class="nav-link">Logout</a></li>
+                                <%} %>
                             </ul>
                         </nav>
                     </div>

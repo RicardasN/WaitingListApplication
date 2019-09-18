@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+<div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
+    <div class="container">
+        <div class="row align-items-center justify-content-right">
+            <div class="col-sm-12">
+                    <h1>My Profile</h1>
+                    <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> Welcome specialist <%= user.username %></h3>
+
+                    <p>
+                        <strong>Specialist_ID: </strong> <%= user.specialist_id %> <br>
+                        <strong>Username: </strong> <%= user.username %> <br>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>

@@ -229,7 +229,7 @@ a {
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   font-weight: 300;
-  color: #364d59; }
+  color: #fff; }
 
 .border-2 {
   border-width: 2px; }
@@ -1338,16 +1338,34 @@ h1, h2, h3, h4, h5,
     flex: 0 0 50px;
     border-radius: 50%; }
 
-input, textarea, select {
-  background: transparent;
+.homeInput, .homeSelect {
   border-top: transparent !important;
   border-left: transparent !important;
   border-right: transparent !important;
   border-bottom: transparent !important;
   font-weight: 200;
-  color: white;
   padding-left: 0;
   text-align: right;
 }
-select { text-align-last: right; }
-option { direction: rtl; }
+.homeSelect { text-align-last: right; }
+.homeOption { direction: rtl; }
+input{
+  background: transparent;
+  border-top: transparent !important;
+  border-left: transparent !important;
+  border-right: transparent !important;
+  border-bottom: 4px solid !important;
+  font-weight: 200;
+  color: white;
+  padding-left: 0;
+}
+select{
+  background: transparent;
+  border-top: 3px solid !important;
+  border-left: 3px solid !important;
+  border-right: 3px solid !important;
+  border-bottom: 3px solid !important;
+  font-weight: 200;
+  color: white;
+  padding-left: 0;
+}

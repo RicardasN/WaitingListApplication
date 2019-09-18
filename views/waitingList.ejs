@@ -11,6 +11,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Specialist</th>
                                 <th scope="col">Time Remaining</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,6 +21,9 @@
                                 <td><%= clients[i].name %></td>
                                 <td><%= clients[i].specialist %></td>
                                 <td>5 minutes</td>
+                                <% if(currentUser){%>
+                                <td><a href="">Mark as Served</a></td>
+                                <%}%>
                             </tr>
                             <%}%>
                         </tbody>

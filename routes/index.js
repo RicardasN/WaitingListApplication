@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../middleware/db');
+const db = require('../config/db');
 
 router.get('/', function (req, res) {
     const sql = 'SELECT * from specializations';
@@ -23,7 +23,7 @@ router.post('/getticket', function (req, res) {
 
 router.get('/waitingList', async function (req, res) {
     var clients = [];
-    const sql = 'SELECT * from `clients`';
+    const sql = 'SELECT * from `clients` LIMIT 20';
     db.query(sql, async function (err, result) {
         if (err) throw err;
         for (var i = 0; i < result.length; i++) {

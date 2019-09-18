@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../middleware/db');
+const db = require('../config/db');
 
 //Routes for creating Database and it's tables
 router.get('/createdb', function(req, res){
