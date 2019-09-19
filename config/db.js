@@ -2,10 +2,11 @@ const mysql = require('mysql');
 
 //Create connection
 var db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'secret123',
-    database : 'waitingApp'
+    host     : process.env.DBSERVER,
+    user     : process.env.DBUSERNAME,
+    password : process.env.DBPASSWORD,
+    port     : process.env.DBPORT,
+    database : process.env.DBNAME
   });
 //Connect  
 db.connect(function(err){
