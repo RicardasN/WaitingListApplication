@@ -2,10 +2,10 @@ const mysql = require('mysql');
 
 //Create connection
 var db = mysql.createConnection({
-    host     : process.env.DBSERVER,
+    host     : 'remotemysql.com',
+    port     : process.env.DBPORT,
     user     : process.env.DBUSERNAME,
     password : process.env.DBPASSWORD,
-    port     : process.env.DBPORT,
     database : process.env.DBNAME
   });
 //Connect  

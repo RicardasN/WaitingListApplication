@@ -22,9 +22,9 @@
                         <tbody>
                             <% for(var i=0; i<clients.length; i++){ %>
                             <tr>
-                                <th scope="row"><%= clients[i].number %></th>
+                                <th scope="row"><%= clients[i].client_id %></th>
                                 <td><%= clients[i].name %></td>
-                                <td><%= clients[i].specialist %></td>
+                                <td><%= clients[i].sepcialist_name %></td>
                                 <td>5 minutes</td>
                                 <% if(currentUser){%>
                                 <td><a href="/client/changeState/<%=clients[i].number%>">Mark as Served</a></td>
