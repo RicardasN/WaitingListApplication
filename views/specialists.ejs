@@ -9,8 +9,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Specialist</th>
-                                <th scope="col">Time Remaining</th>
+                                <th scope="col">Specialialization</th>
+                                <th scope="col">Average Serving Time</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -20,11 +20,8 @@
                                 <th scope="row"><%= clients[i].client_id %></th>
                                 <td><%= clients[i].name %></td>
                                 <td><%= clients[i].sepcialist_name %></td>
-                                <% if(clients[i].servingTime){%>
-                                <td><%= clients[i].servingTime %> minutes</td>
-                                <%}else{%>
-                                <td>No clients served</td>
-                                <%}%>
+                                <td>5 minutes</td>
+                                <td><a href="">Choose</a></td>
                             </tr>
                             <%}%>
                         </tbody>

@@ -1351,10 +1351,10 @@ h1, h2, h3, h4, h5,
 .homeOption { direction: rtl; }
 input{
   background: transparent;
-  border-top: transparent !important;
-  border-left: transparent !important;
-  border-right: transparent !important;
-  border-bottom: 4px solid !important;
+  border-top: 1px solid !important;
+  border-left: 1px solid !important;
+  border-right: 1px solid !important;
+  border-bottom: 1px solid !important;
   font-weight: 200;
   color: white;
   padding-left: 0;
