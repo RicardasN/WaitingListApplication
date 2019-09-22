@@ -3,7 +3,7 @@
       <div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-5">
+            <div class="col-lg-6">
               <div class="feature-car-rent-box-1">
                 <form action="/getticket" method="post">
                 <h3 style="color: black">Enter your details to get a ticket</h3>
@@ -19,7 +19,7 @@
                     <span class="spec">
                       <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect">
                         <% for(var i=0; i<specializations.length; i++){ %>
-                          <option class="homeOption" value="<%=specializations[i].specialization_id%>"><%= specializations[i].specialization %></option>
+                          <option class="homeOption" value="<%=specializations[i].specialist_id%>"><%= specializations[i].name %>-<%= specializations[i].specialization %></option>
                         <%}%>
                       </select>
                     </span>

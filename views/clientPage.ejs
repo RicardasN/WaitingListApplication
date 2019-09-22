@@ -22,18 +22,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(var i=0; i<clients.length; i++){ %>
                             <tr>
-                                <th scope="row"><%= clients[i].client_id %></th>
-                                <td><%= clients[i].name %></td>
-                                <td><%= clients[i].sepcialist_name %></td>
-                                <% if(clients[i].servingTime){%>
-                                <td><%= moment(clients[i].ticketCreated).add(clients[i].servingTime*clients[i].rowPosition, 'minutes').fromNow() %></td>
+                                <th scope="row"><%= clients[0].client_id %></th>
+                                <td><%= clients[0].name %></td>
+                                <td><%= clients[0].sepcialist_name %></td>
+                                <% if(clients[0].servingTime){%>
+                                <td><%= moment(clients[0].ticketCreated).add(clients[0].servingTime*position, 'minutes').fromNow() %></td>
                                 <%}else{%>
-                                    <td><%= moment(clients[i].ticketCreated).add(5*clients[i].rowPosition, 'minutes').fromNow(true) %></td>
+                                    <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow(true) %></td>
                                 <%}%>
                             </tr>
-                            <%}%>
                         </tbody>
                     </table>
                 </div>
