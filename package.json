@@ -1,0 +1,40 @@
+{
+  "name": "waitinglistapplication",
+  "version": "1.0.0",
+  "description": "A simple application aimed to ease use of various waiting ticket systyems in banks, hospitals and so on",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardasN/WaitingListApplication.git"
+  },
+  "author": "Ricardas Noreika",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicardasN/WaitingListApplication/issues"
+  },
+  "homepage": "https://github.com/RicardasN/WaitingListApplication#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "timediff": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}

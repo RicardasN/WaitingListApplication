@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+    <div class="ftco-blocks-cover-1">
+      <div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-5">
+              <div class="feature-car-rent-box-1">
+                <form action="/getticket" method="post">
+                <h3 style="color: black">Enter your details to get a ticket</h3>
+                <ul class="list-unstyled">
+                  <li>
+                    <span>Name</span>
+                    <span class="spec">
+                      <input class="form-control homeInput" type="text" name="name" id="name" placeholder="Name" required>
+                    </span>
+                  </li>
+                  <li>
+                    <span>Specialist</span>
+                    <span class="spec">
+                      <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect">
+                        <% for(var i=0; i<specializations.length; i++){ %>
+                          <option class="homeOption" value="<%=specializations[i].specialization_id%>"><%= specializations[i].specialization %></option>
+                        <%}%>
+                      </select>
+                    </span>
+                  </li>
+                </ul>
+                <div class="d-flex align-items-center bg-light p-3">
+                  <button class="ml-auto btn btn-primary" type="submit">Get Ticket</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% include ./partials/footer %>
+
