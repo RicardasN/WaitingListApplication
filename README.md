@@ -5,6 +5,8 @@ Pasirinkau daryti su Node.js ir Express.js pamatęs, kad kaip pliusą žymite je
 # Apie pačią aplikaciją
 **Technologijos**
 
+PASTEBĖJAU, KAD REMOTEMYSQL UŽDARO CONNECTION PO KELIŲ VALANDŲ IR REIKIA RESTARTUOTI CONNECTION, BET HEROKU NELEIDŽIA NAUDOTI FOREVER.JS
+TAI PANAŠU, KAD LIVE VEIKIA TIK PO KIEK LAIKO VĖL PALEIDŽIANT SERVERĮ. Pražiopsojau šitą, o kadangi kelias valandas veikė testavimo metu nemačiau.
 
 Naudojau remotemysql.com serverį laikyti duomenis ir heroku hostinti svetainę. Taigi projektas yra "live", tačiau tikrai nėra jis tobulas, neturėjau laiko ištestuoti visų galimų atvejų, neprigeneravau daug duomenų į duomenų bazę, tai nenustebčiau jei kažkur gali atsirasti kokia fatal klaida. Pagrinde dirbau su VisualStudioCode editoriumi ir dariau pažingsninius commit į atskiras šakas, tačiau suprantu, kad juos reiktų dėti dažniau, su kiekviena nauja savybe, kad atsektum klaidą ir galėtum grįžti. Čia gavosi, kad dėjau blokais, kiekvieno darbo etapo pabaigoje. Authentikacijai bei Front End'ui naudojau templates, nekūriau savo nuo nulio.
 
