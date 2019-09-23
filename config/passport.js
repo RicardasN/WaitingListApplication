@@ -29,7 +29,7 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (rows.length) {
-              return done(null, false, req.flash('signupMessage', 'That is already taken'));
+              return done(null, false, req.flash('signupMessage', 'Another user with such username already exists, choose a different one.'));
             } else {
               var newUserMysql = {
                 username: username,
@@ -64,10 +64,10 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (!rows.length) {
-              return done(null, false, req.flash('loginMessage', 'No User Found'));
+              return done(null, false, req.flash('loginMessage', 'User with the given username does not exist in our system. If you have an account check your input details. If not you can sign up!'));
             }
             if (!bcrypt.compareSync(password, rows[0].password))
-              return done(null, false, req.flash('loginMessage', 'Wrong Password'));
+              return done(null, false, req.flash('loginMessage', 'Password entereed is incorrect, try a different one or check if you have CAPS_LOCK on'));
             return done(null, rows[0]);
           });
       })

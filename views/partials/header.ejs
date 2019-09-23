@@ -50,10 +50,12 @@
                             <ul class="site-menu main-menu js-clone-nav ml-auto ">
                                 <li active><a href="/" class="nav-link">Home</a></li>
                                 <li><a href="/waitingList" class="nav-link">Waiting Row</a></li>
+                                <li><a href="/statistics" class="nav-link">Statistics</a></li>
                                 <% if(!currentUser){%>
                                     <li><a href="/login" class="nav-link">Login</a></li>
                                     <li><a href="/signup" class="nav-link">Sign Up</a></li>
                                 <%} else{%>
+                                    <li><a href="/specialistPage" class="nav-link">Specialist Page</a></li>
                                     <li><a href="/profile" class="nav-link">Signed In as <%= currentUser.username %></a></li>
                                     <li><a href="/logout" class="nav-link">Logout</a></li>
                                 <%} %>

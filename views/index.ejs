@@ -11,13 +11,13 @@
                   <li>
                     <span>Name</span>
                     <span class="spec">
-                      <input class="form-control homeInput" type="text" name="name" id="name" placeholder="Name" required>
+                      <input class="form-control homeInput" type="text" name="name" id="name" placeholder="Name" value="<%=client.name%>">
                     </span>
                   </li>
                   <li>
                     <span>Specialist</span>
                     <span class="spec">
-                      <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect">
+                      <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect"value="<%=client.specialist_id%>">
                         <% for(var i=0; i<specializations.length; i++){ %>
                           <option class="homeOption" value="<%=specializations[i].specialist_id%>"><%= specializations[i].name %>-<%= specializations[i].specialization %></option>
                         <%}%>
