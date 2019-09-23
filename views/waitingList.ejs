@@ -36,14 +36,10 @@
                                 <td><%= clients[i].name %></td>
                                 <td><%= clients[i].sepcialist_name %></td>
                                 <% if(clients[i].servingTime){%>
-                                <td>true</td>
                                 <td><%= moment(clients[i].ticketCreated).add(clients[i].servingTime*clients[i].rowPosition, 'minutes').fromNow() %></td>
                                 <%}else{%>
-                                    <td>false</td>
                                     <td><%= moment(clients[i].ticketCreated).add(5*clients[i].rowPosition, 'minutes').fromNow() %></td>
                                 <%}%>
-                                <td><%=clients[i].servingTime%></td>
-                                <td><%=clients[i].rowPosition%></td>
                             </tr>
                             <%}%>
                         </tbody>
