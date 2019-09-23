@@ -109,7 +109,7 @@ router.get('/waitingList/:token', async function (req, res) {
             return;
         }
         const rowPositionCountSql = 'SELECT COUNT(*) AS rowPosition FROM `clients` WHERE `ticketCreated`<\'' + result[0].ticketCreated +
-            '\' AND `specialist_id`=' + result[0].specialist_id;
+            '\' AND `specialist_id`=' + result[0].specialist_id +' AND wasServed=0';
         db.query(rowPositionCountSql, function (err, position) {
             if (err) {
                 console.log(err);
