@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2019 m. Rgs 23 d. 16:10
+-- Generation Time: 2019 m. Rgs 23 d. 23:21
 -- Server version: 8.0.13-4
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -53,7 +53,12 @@ INSERT INTO `clients` (`client_id`, `specialist_id`, `name`, `wasServed`, `token
 (33, 15, ' Johnathan Green ', 1, '0ae8475c4ce6a22fe64e28f4cab6ca9bf4ce3aa9'),
 (34, 16, ' Edith Zanussi ', 1, 'bfdef636b53b4762c141c5da1d499fb303805f86'),
 (35, 15, ' Julia Dandy ', 0, 'b3552da2d92025f852de5bd6c190d82e9687136a'),
-(38, 14, ' Johnathan Green ', 0, '5ad53ceb85347e2ddd4987acae9889dd59dd2ed3');
+(38, 14, ' Johnathan Green ', 0, '5ad53ceb85347e2ddd4987acae9889dd59dd2ed3'),
+(39, 16, ' Victoria Naomi ', 0, 'c4f5ed98cf3bbb3bed9cfdf8c7a2276ea305c9c6'),
+(40, 15, ' Anthony Freeman ', 0, '11dbff72f852e61fff92cc32cdf36f25ca4e8ca4'),
+(41, 16, ' Melany Normandy ', 0, '73ea9b67f5d8115207de4954c504ea0e41a50c83'),
+(42, 14, ' Ray Donavan ', 0, 'd3d1481a41c8f568f97fb8d3d401fff194643fe7'),
+(43, 14, ' Logan Night ', 0, '40138a786c94981ab0337d9516afac1435b523a2');
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ ALTER TABLE `specializations`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `specialists`
