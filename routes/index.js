@@ -96,11 +96,11 @@ router.get('/specialistPage', auth.isLoggedIn, async function (req, res) {
     });
 });
 router.get('/waitingList/:token', async function (req, res) {
-    const sql = 'SELECT `specialists`.`name` AS sepcialist_name,`specialists`.`specialist_id`,, `specialists`.`averageServingTime` AS servingTime, `clients`.`client_id`,' +
+    const sql = 'SELECT `specialists`.`name` AS sepcialist_name,`specialists`.`specialist_id`, `specialists`.`averageServingTime` AS servingTime, `clients`.`client_id`,' +
         ' `clients`.`name`, `clients`.`token`, clients.wasServed, clients.ticketCreated ' +
         ' FROM `specialists` INNER JOIN `clients`' +
         'ON `specialists`.`specialist_id`=`clients`.`specialist_id`' +
-        ' WHERE clients.wasServed = 0 AND `clients`.`token` = \'' + req.params.token + '\';';
+        ' WHERE clients.wasServed = 0 AND `clients`.`token` = "' + req.params.token + '";';
     db.query(sql, function (err, result) {
         if (err || result.length < 1) {
             console.log(err);
@@ -117,6 +117,7 @@ router.get('/waitingList/:token', async function (req, res) {
                 res.render('clientPage', { clients: [] });
                 return;
             }
+            console.log(result, position[0].rowPosition);
             res.render('clientPage', {
                 clients: result, position: position[0].rowPosition, moment
             });
