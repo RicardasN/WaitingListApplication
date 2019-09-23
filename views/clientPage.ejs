@@ -40,7 +40,7 @@
                                 <td><%= moment(clients[0].ticketCreated).add(clients[0].servingTime*position, 'minutes').fromNow() %>
                                 </td>
                                 <%}else{%>
-                                <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow(true) %>
+                                <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow() %>
                                 </td>
                                 <%}%>
                                 <td>
