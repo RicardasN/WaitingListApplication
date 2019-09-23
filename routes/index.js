@@ -15,6 +15,37 @@ router.get('/', function (req, res) {
 });
 
 router.post('/getticket', function (req, res) {
+    //First of all lets validate the data
+    const { name, specialistSelect } = req.body;
+    //--------------------------------------------------
+    //validation error handling
+    let errors = [];
+    //If any data was even entered into the form
+    if (!name || specialistSelect==="Choose...") {
+        errors.push("Please fill in all the fields!")
+    } else {
+        //To ease people woking with system it would be complicated if there are 2 people with teh same name
+        //It could cause confusion, therefore we check if it is a full name
+        if (name.length < 9) {
+            errors.push("Please enter your full name!")
+        }
+        //If the name contains characters or numbers it's not a name
+        var regex = /[0-9//*&%${}()£$"@;.,?!~#|]+/g;
+        if (name.match(regex) && name.match(regex).length > 0) {
+            errors.push("Please enter a valid name, not a mix of characters!")
+        }
+    }
+    //if there were errors return the form
+    if (errors.length > 0) {
+        const sql = 'SELECT * FROM `specializations`, `specialists` WHERE `specialists`.`specialization_id`=`specializations`.`specialization_id`';
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            res.render('index', { specializations: result, errors, name, specialistSelect });
+        });
+        return;
+    }
+    //If not everything is ok and we can create a ticket
+
     //lets generate a unique link for the user
     crypto.randomBytes(20, function (err, buff) {
         if (err) {

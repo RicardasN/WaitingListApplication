@@ -12,6 +12,7 @@
                                         you want to view</label></br>
                             <div class="input-group">
                                     <select class="custom-select" id="inputGroupSelect04" name="specialistSelect">
+                                            <option selected>Choose...</option>
                                             <% for(var i=0; i<specialists.length; i++){ %>
                                                     <option value="<%=specialists[i].specialist_id%>"><%= specialists[i].name %>-<%= specialists[i].specialization %></option>
                                                   <%}%>
