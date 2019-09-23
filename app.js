@@ -19,7 +19,7 @@ const authenticationRoutes = require('./routes/auth');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 //Morgan
-app.use(morgan());
+app.use(morgan('dev'));
 //Cookie Parser
 app.use(cookieParser());
 passportConfig(passport);
