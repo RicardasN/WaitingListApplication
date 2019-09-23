@@ -28,6 +28,8 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Specialist</th>
                                 <th scope="col">Time Remaining</th>
+                                <th scope="col">Average Waiting Time</th>
+                                <th scope="col">Your position in the row</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +41,13 @@
                                 <% if(clients[0].servingTime){%>
                                 <td><%= moment(clients[0].ticketCreated).add(clients[0].servingTime*position, 'minutes').fromNow() %>
                                 </td>
+                                <td><%=clients[0].servingTime%></td>
                                 <%}else{%>
                                 <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow() %>
                                 </td>
+                                <td>Unknown</td>
                                 <%}%>
+                                <td><%=position%></td>
                                 <td>
                                     <form action="/clients/<%=clients[0].token%>?_method=delete" method="post"
                                 style="display: inline-flexbox">
