@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -22,7 +23,6 @@ app.use(morgan('dev'));
 //Cookie Parser
 app.use(cookieParser());
 passportConfig(passport);
-
 //Body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
@@ -33,7 +33,11 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+//Flash messages
 app.use(flash());
+//Method override (so we could use other request types like PUT, DELETE)
+app.use(methodOverride("_method"));
+
 
 //Global variables
 app.use(globalvariables);

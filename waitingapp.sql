@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 19, 2019 at 06:35 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Host: localhost
+-- Generation Time: 2019 m. Rgs 23 d. 16:10
+-- Server version: 8.0.13-4
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,40 +19,46 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `waitingapp`
+-- Database: `ZJtw5JjMUn`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- Sukurta duomenų struktūra lentelei `clients`
 --
 
 CREATE TABLE `clients` (
   `client_id` int(11) NOT NULL,
   `specialist_id` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `wasServed` tinyint(1) NOT NULL DEFAULT 0,
-  `ticketCreated` datetime NOT NULL DEFAULT current_timestamp()
+  `wasServed` tinyint(1) NOT NULL DEFAULT '0',
+  `ticketCreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ticketClosed` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `token` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `clients`
+-- Sukurta duomenų kopija lentelei `clients`
 --
 
-INSERT INTO `clients` (`client_id`, `specialist_id`, `name`, `wasServed`, `ticketCreated`) VALUES
-(3, 2, 'Victoria', 0, '2019-09-18 17:18:04'),
-(4, 1, 'John', 0, '2019-09-18 17:18:04'),
-(5, 3, 'Judy', 0, '2019-09-18 18:35:02'),
-(6, 1, 'John', 0, '2019-09-18 18:39:26'),
-(7, 1, ' Viktorija ', 0, '2019-09-18 18:48:51'),
-(8, 1, ' Monika ', 0, '2019-09-18 18:50:19'),
-(9, 1, ' Jim Johnson ', 1, '2019-09-18 19:04:06');
+INSERT INTO `clients` (`client_id`, `specialist_id`, `name`, `wasServed`, `token`) VALUES
+(26, 14, ' Alice Green ', 1, '966659f9e92f88f6885ec366da199df2a05136dc'),
+(27, 14, ' Monica Main ', 1, '7cdb61293e02d6e064ab7653a49beb6f06b5605c'),
+(28, 14, ' Victoria Hethaway ', 1, '451c9f83130ab1befc7e77af72b6034696ac2c5a'),
+(29, 14, ' Andrew Bold ', 1, 'b35c5bb29972b6a23b56c034615440b8ec03f675'),
+(30, 14, ' Paul Shorne ', 1, 'b12a676c58b4ffa9b523fafe962d9c6239e20a6d'),
+(31, 14, ' Anthony Neuer ', 1, 'd714e6fb571583dcbcfa30eca228a44769c47f62'),
+(32, 16, ' Brad Bradbury ', 1, '57e74de9fc5779fa474bf1cd4e9653963a89e242'),
+(33, 15, ' Johnathan Green ', 1, '0ae8475c4ce6a22fe64e28f4cab6ca9bf4ce3aa9'),
+(34, 16, ' Edith Zanussi ', 1, 'bfdef636b53b4762c141c5da1d499fb303805f86'),
+(35, 15, ' Julia Dandy ', 0, 'b3552da2d92025f852de5bd6c190d82e9687136a'),
+(38, 14, ' Johnathan Green ', 0, '5ad53ceb85347e2ddd4987acae9889dd59dd2ed3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `specialists`
+-- Sukurta duomenų struktūra lentelei `specialists`
 --
 
 CREATE TABLE `specialists` (
@@ -60,24 +66,23 @@ CREATE TABLE `specialists` (
   `name` varchar(255) NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `specialization_id` int(11) DEFAULT NULL
+  `specialization_id` int(11) DEFAULT NULL,
+  `averageServingTime` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `specialists`
+-- Sukurta duomenų kopija lentelei `specialists`
 --
 
-INSERT INTO `specialists` (`specialist_id`, `name`, `username`, `password`, `specialization_id`) VALUES
-(1, 'John Bauer', '', '', 1),
-(2, 'Alice Green', '', '', 2),
-(3, 'Judy Wraith', '', '', 3),
-(8, 'Viktorija', 'Influencer', '$2a$10$4VaEIW10HksZ22y3W2bd7OS3.ntHPsTnqUuUhcOd5ZchwTed0oxZO', 1),
-(9, 'Viktorija', 'Influencer22', '$2a$10$QpjKEZPBrOvPRtve0S8//O0OI2piIMwqFL4ivPlykQoysvzkAih5S', 1);
+INSERT INTO `specialists` (`specialist_id`, `name`, `username`, `password`, `specialization_id`, `averageServingTime`) VALUES
+(14, 'Mike Mayers', 'mike.mayers', '$2a$10$uG.D6twYa0MRcOscVlCOTu5Z7Swsf026tBv7Oav/KZiK0oYiupjs6', 3, 7),
+(15, 'John Mauer', 'john.mauer', '$2a$10$U8e49bZTbHeqHGH.xpsFBup0r4/aqxtOzGgkZHbr02OxT8nKWxPze', 2, 10),
+(16, 'Judith Knight', 'judith.knight', '$2a$10$KeGrKXdoZPrwTEvReIsMludrJylCQbovkS7jE5d7ZjoKyP1bvVwDa', 1, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `specializations`
+-- Sukurta duomenų struktūra lentelei `specializations`
 --
 
 CREATE TABLE `specializations` (
@@ -86,7 +91,7 @@ CREATE TABLE `specializations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `specializations`
+-- Sukurta duomenų kopija lentelei `specializations`
 --
 
 INSERT INTO `specializations` (`specialization_id`, `specialization`) VALUES
@@ -126,13 +131,13 @@ ALTER TABLE `specializations`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `specialists`
 --
 ALTER TABLE `specialists`
-  MODIFY `specialist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `specialist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `specializations`
@@ -141,17 +146,17 @@ ALTER TABLE `specializations`
   MODIFY `specialization_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Apribojimai eksportuotom lentelėm
 --
 
 --
--- Constraints for table `clients`
+-- Apribojimai lentelei `clients`
 --
 ALTER TABLE `clients`
   ADD CONSTRAINT `clients_ibfk_1` FOREIGN KEY (`specialist_id`) REFERENCES `specialists` (`specialist_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `specialists`
+-- Apribojimai lentelei `specialists`
 --
 ALTER TABLE `specialists`
   ADD CONSTRAINT `specialists_ibfk_1` FOREIGN KEY (`specialization_id`) REFERENCES `specializations` (`specialization_id`);

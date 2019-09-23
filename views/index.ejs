@@ -5,22 +5,36 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="feature-car-rent-box-1">
+                  <% if(typeof errors != 'undefined'){ %>
+                    <% errors.forEach(function(error){%>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%= error %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <% })%>
+                <% } %>
                 <form action="/getticket" method="post">
                 <h3 style="color: black">Enter your details to get a ticket</h3>
                 <ul class="list-unstyled">
                   <li>
                     <span>Name</span>
                     <span class="spec">
-                      <input class="form-control homeInput" type="text" name="name" id="name" placeholder="Name" required>
+                      <input class="form-control homeInput" type="text" name="name" id="name" placeholder="Name" value="<%= typeof name != 'undefined' ? name : '' %>">
                     </span>
                   </li>
                   <li>
                     <span>Specialist</span>
                     <span class="spec">
-                      <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect">
+                      <select name="specialistSelect" id="specialistSelect" class="form-control homeSelect" value="<%= typeof specialistSelect != 'undefined' ? specialistSelect : '' %>">
+                          <option>Choose...</option>
                         <% for(var i=0; i<specializations.length; i++){ %>
+                          <%if(typeof specialistSelect != 'undefined' && specialistSelect==specializations[i].specialist_id){%>
+                            <option selected class="homeOption" value="<%=specializations[i].specialist_id%>"><%= specializations[i].name %>-<%= specializations[i].specialization %></option>
+                          <%}else{%>
                           <option class="homeOption" value="<%=specializations[i].specialist_id%>"><%= specializations[i].name %>-<%= specializations[i].specialization %></option>
-                        <%}%>
+                        <%}}%>
                       </select>
                     </span>
                   </li>

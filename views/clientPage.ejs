@@ -1,15 +1,25 @@
 <% include ./partials/header %>
-<meta http-equiv="refresh" content="5">
+<!-- Kliento puslapis atnaujinamas kas 20, o ne 5 sekundes, nes realybėje nemanau, kad sekundės turi daug reikšmės, -->
+<!-- o taip dažnai atnaujinant nespėji pamatyti flash žinučių -->
+<meta http-equiv="refresh" content="20">
 <div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="feature-car-rent-box-1">
-                        <% if( typeof success_message != 'undefined' && success_message.length > 0) { %>
-                            <div class="alert alert-success"><%= success_message %></div>
+                        <% if(success_message != ''){ %>
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <%=success_message%>
+                            </div>
                         <% } %>
-                        <% if(typeof error_message != 'undefined' && error_message.length > 0) { %>
-                            <div class="alert alert-danger"><%= error_message %></div>
+                        <% if(error_message != ''){ %>
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <%=error_message%>
+                            </div>
                         <% } %>
                     <table class="table">
                         <thead>
@@ -18,18 +28,28 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Specialist</th>
                                 <th scope="col">Time Remaining</th>
-                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <% if(clients.length>0){ %>
                                 <th scope="row"><%= clients[0].client_id %></th>
                                 <td><%= clients[0].name %></td>
                                 <td><%= clients[0].sepcialist_name %></td>
                                 <% if(clients[0].servingTime){%>
-                                <td><%= moment(clients[0].ticketCreated).add(clients[0].servingTime*position, 'minutes').fromNow() %></td>
+                                <td><%= moment(clients[0].ticketCreated).add(clients[0].servingTime*position, 'minutes').fromNow() %>
+                                </td>
                                 <%}else{%>
-                                    <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow(true) %></td>
+                                <td><%= moment(clients[0].ticketCreated).add(5*position, 'minutes').fromNow() %>
+                                </td>
+                                <%}%>
+                                <td>
+                                    <form action="/clients/<%=clients[0].token%>?_method=delete" method="post"
+                                style="display: inline-flexbox">
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                                </form>
+                                </td>
+                                <td><a class="btn btn-info" href="/delay/<%=clients[0].client_id%>">Delay</a></td>
                                 <%}%>
                             </tr>
                         </tbody>

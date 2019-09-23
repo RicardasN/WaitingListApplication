@@ -1,0 +1,75 @@
+<% include ./partials/header %>
+<div class="ftco-cover-1 overlay" style="background-image: url('images/waitingLounge.jpg')">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1>Statistics</h1>
+                <div class="row mb-5 mt-5">
+                    <div class="col-md-6">
+                                <form action="/specialistStatistics" method="get">
+                                    <label style="color: white" for="specialistSelect">Select Specialist who's
+                                        statistics
+                                        you want to view</label></br>
+                            <div class="input-group">
+                                    <select class="custom-select" id="inputGroupSelect04" name="specialistSelect">
+                                            <option selected>Choose...</option>
+                                            <% for(var i=0; i<specialists.length; i++){ %>
+                                                    <option value="<%=specialists[i].specialist_id%>"><%= specialists[i].name %>-<%= specialists[i].specialization %></option>
+                                                  <%}%>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-light" type="submit" style="border-color: lightgray">Submit</button>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="feature-car-rent-box-1">
+                                <% if(success_message != ''){ %>
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <%=success_message%>
+                                    </div>
+                                <% } %>
+                                <% if(error_message != ''){ %>
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <%=error_message%>
+                                    </div>
+                                <% } %>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Specialist Name</th>
+                                        <th scope="col">Day</th>
+                                        <th scope="col">Average Serving Time</th>
+                                        <th scope="col">Clients Served</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var i=0; i<statistics.length; i++){ %>
+                                    <tr>
+                                        <th scope="row"><%=i+1%></th>
+                                        <td><%= statistics[i].name %></td>
+                                        <td><%= statistics[i].ticketDay%> th day</td>
+                                        <td><%= statistics[i].averageServingTime%> minutes</td>
+                                        <td><%= statistics[i].clientCount %></td>
+                                    </tr>
+                                    <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<% include ./partials/footer %>

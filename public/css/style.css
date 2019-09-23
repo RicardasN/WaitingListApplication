@@ -1014,8 +1014,6 @@ h1, h2, h3, h4, h5,
       padding-right: 20px;
       border-color: transparent;
       margin-right: 10px; }
-    .ftco-cover-1.overlay form .btn {
-      border-color: transparent; }
 
 .owl-all .owl-dots {
   text-align: center;
@@ -1361,10 +1359,10 @@ input{
 }
 select{
   background: transparent;
-  border-top: 3px solid !important;
-  border-left: 3px solid !important;
-  border-right: 3px solid !important;
-  border-bottom: 3px solid !important;
+  border-top: 1px solid !important;
+  border-left: 1px solid !important;
+  border-right: 1px solid !important;
+  border-bottom: 1px solid !important;
   font-weight: 200;
   color: white;
   padding-left: 0;
