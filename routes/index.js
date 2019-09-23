@@ -117,7 +117,7 @@ router.get('/waitingList/:token', async function (req, res) {
                 res.render('clientPage', { clients: [] });
                 return;
             }
-            console.log(result, position[0].rowPosition);
+            //console.log(result, position[0].rowPosition);
             res.render('clientPage', {
                 clients: result, position: position[0].rowPosition, moment
             });
