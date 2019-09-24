@@ -1,19 +1,33 @@
-const mysql = require('mysql');
-
-//Create connection
-var db = mysql.createConnection({
+const util = require('util')
+const mysql = require('mysql')
+const db = mysql.createPool({
+    connectionLimit: 10,
     host: 'remotemysql.com',
     port: process.env.DBPORT,
     user: process.env.DBUSERNAME,
     password: process.env.DBPASSWORD,
     database: process.env.DBNAME
 });
-//Connect  
-db.connect(function (err) {
+// Ping database to check for common exception errors.
+db.getConnection((err, connection) => {
     if (err) {
-        throw err;
+      if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+        console.error('Database connection was closed.')
+      }
+      if (err.code === 'ER_CON_COUNT_ERROR') {
+        console.error('Database has too many connections.')
+      }
+      if (err.code === 'ECONNREFUSED') {
+        console.error('Database connection was refused.')
+      }
     }
-    console.log('MySql Connected...');
-});
-
-module.exports = db;
+  
+    if (connection) connection.release()
+  
+    return
+  })
+  
+  // Promisify for Node.js async/await.
+  db.query = util.promisify(db.query)
+  
+  module.exports = db
